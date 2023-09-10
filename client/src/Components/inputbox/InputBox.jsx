@@ -21,7 +21,7 @@ function InputBox(props) {
 
     Axios.post("http://localhost:8055/getStudent",{rollnumber:rollnumber})
     .then((student)=>{
-     props.setStudent([student.data]) 
+     props.setStudent(student.data) 
     })
     .catch((error)=>{
       console.log(error)
