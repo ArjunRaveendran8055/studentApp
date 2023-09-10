@@ -8,7 +8,7 @@ function InputBox(props) {
   const [rollnumber,setRollNumber]=useState("")
 
   const onChangeHandler=(e)=>{
-    setRollNumber(e.target.value)
+    setRollNumber(e.target.value.toUpperCase())
   }
 
   const onSearchHandler=()=>{
