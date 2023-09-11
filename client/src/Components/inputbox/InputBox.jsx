@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios"
 import "./Box.css"
+import {toast} from "react-toastify"
 
 
 function InputBox(props) {
@@ -8,12 +9,13 @@ function InputBox(props) {
   const [rollnumber,setRollNumber]=useState("")
 
   const onChangeHandler=(e)=>{
+    toast.dismiss()
     setRollNumber(e.target.value.toUpperCase())
   }
 
   const onSearchHandler=()=>{
     if(rollnumber==""){
-      alert("enter rollnumber")
+      toast("Please enter rollnumber")
       return
     }
     
@@ -21,6 +23,13 @@ function InputBox(props) {
 
     Axios.post("http://localhost:8055/getStudent",{rollnumber:rollnumber})
     .then((student)=>{
+  
+      if(student.data.message){
+        //console.log("hit")
+        props.setStudent([])
+        toast(student.data.message)
+        return 
+      }
      props.setStudent(student.data) 
     })
     .catch((error)=>{
@@ -31,6 +40,7 @@ function InputBox(props) {
 
   return (
     <div className="main">
+    
       <div className="InputContainer">
         <input
           type="text"

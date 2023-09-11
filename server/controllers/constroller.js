@@ -10,12 +10,12 @@ const getStudent= async (req,res)=>{
         const {rollnumber}=req.body
         //console.log(rollnumber)
         const student= await studentsModel.find({roll:rollnumber})
-        if(student){
-            return res.status(200).json(student)
+        if(student.length!=0){
+            return res.json(student)
         }
-        res.status(400).json({message:"rollnumber not found"})
+        return res.json({message:"rollnumber not found"})
     } catch (error) {
-        res.status(500).json({error:error.message})
+        res.json({error:error.message})
     }
 }
 

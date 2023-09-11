@@ -7,6 +7,8 @@ function StudentCard(props) {
 
   return (
 
+    student.length!=0?
+    (
     student.map((item, index)=>{
       return(
         <div key={index}>
@@ -47,6 +49,7 @@ function StudentCard(props) {
       )
 
     })
+    ):<div></div>
 
 
   )
