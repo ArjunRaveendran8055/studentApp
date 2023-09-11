@@ -13,7 +13,7 @@ const getStudent= async (req,res)=>{
         if(student.length!=0){
             return res.json(student)
         }
-        return res.json({message:"rollnumber not found"})
+        return res.json({message:"Kindly Enter a Valid Number 😔"})
     } catch (error) {
         res.json({error:error.message})
     }

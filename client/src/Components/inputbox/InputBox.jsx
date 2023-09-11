@@ -15,7 +15,7 @@ function InputBox(props) {
 
   const onSearchHandler=()=>{
     if(rollnumber==""){
-      toast("Please enter rollnumber")
+      toast("Please enter rollnumber (eg: XY031)")
       return
     }
     
